@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HEXAI.org - Benchmarks and Evals for LLMs and AI</title>
+    <meta charset="UTF-8" />
+<link rel="icon" rel="mask-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='32px' height='32px' viewBox='0 0 32 32'%3E%3Cpolygon fill='%23F60' stroke='%23F30' points='2,8 16,0 30,8 30,24 16,32 2,24 '/%3E%3Cline fill='none' stroke='%23FFFFFF' stroke-width='3' x1='8' y1='10' x2='24' y2='10'/%3E%3Cline fill='none' stroke='%23FFFFFF' stroke-width='3' x1='8' y1='16' x2='24' y2='16'/%3E%3Cline fill='none' stroke='%23FFFFFF' stroke-width='3' x1='8' y1='22' x2='24' y2='22'/%3E%3C/svg%3E");>
+<link rel="mask-icon" href="mask-icon.svg" color="#000000">
+ 
+<style>
+    body{background-color:linen;font-family:Arial,Helvetica,sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column}
+    h1, a:hover, .c0{color:#ff4500}
+    .lh1r{line-height:1rem}
+    .c1{color:#0cc}
+    .c2{color:#2b6}
+    .c3{color:#f90}
+    .c4{color:#f54}
+    .c5{color:#f90}
+    .c6{color:#83f}
+    .c7{color:#333}
+    li a{color:#fff}
+    .dark{background-color:#555;color:#fff}
+    a{text-decoration:none}
+    .btnl{padding:12px 24px;border:2px solid #555;cursor:pointer;border-radius:48px}
+    .btns{padding:6px 12px;border:2px solid #555;cursor:pointer;border-radius:36px}
+    .nl{font-size:1.5rem; margin: 24px 10px 10px 10px;  color:#555}
+    icon{font-size:120px;margin:0 auto;color:#666}
+    .icn{font-size:80px;margin:0 auto;color:#666}
+    ul{text-align:left}
+    nav{height:80px;width:100%;top:0; padding: auto 0;}
+    header{min-height:360px;width:100%;background-color:#d3d3d3}
+    footer{min-height:200px;background-color:#333;text-align:center;padding:1rem;margin-top:auto;color:#fff}
+    main{min-height:350px;padding:2rem}*{box-sizing:border-box}
+    .row{display:flex;flex-wrap:wrap}
+    .column{padding:1rem;align-content:center;text-align:center}
+    .w50{flex:50%}
+    .w25{flex:25%}
+    .w33{flex:33%}
+    .w66{flex:66%}
+    .w75{flex:75%}
+    .w100{flex:100%}
+    .fs20 {font-size: 20px; font-weight: 700;}
+    .fs16 {font-size: 18px; font-weight: 500;}
+    table {border-collapse: collapse;}
+    table tr  {border-bottom: 1px solid #ccc}
+    td  {font-size: 1.5rem; text-align: center;}
+    @media screen and (max-width:992px){.w100{flex:50%}}
+    @media screen and (max-width:600px){.row{flex-direction:column}}
+    </style>
+</head>
+<body>
+<nav>
+<div style="float:left;width:25%;top:0;padding:0;margin:0;">
+<h1 style="font-size:40px; margin: 16px 40px;">
+    <a href=# style="color:#555"><span style="letter-spacing:-1px">HΞ</span>X<sup class="c4">AI</sup></a></h1>
+</div>
+<div style="float:right; text-align:right; width:75%;padding:0;margin:0;">
+<div class="nl">
+<a class="nl" href=m.html>Models</a>
+<a class="nl" href=b.html>Benchmarks</a>
+<a class="nl" href=r.html>Research</a>
+<a class="nl" href=https://github.com/hexai-org>Git</a>
+<a class="nl btns" href=login.html>Log&nbsp;in</a>
+</div>
+</div>
+</nav>
+<header>
+<div class="row">
+<div class="column w50">
+<svg xmlns=http://www.w3.org/2000/svg width=420 height=420 viewBox="0 0 500 500" xml:space=preserve>
+<style>
+    .cl{font-size:18px;font-weight:700}
+    .ct{font-size:12px;fill:#555}
+    .c1{fill:#0cc}
+    .c2{fill:#2b6}
+    .c3{fill:#f90}
+    .c4{fill:#f54}
+    .c5{fill:#03f}
+    .c6{fill:#83f}</style>
+<path fill=none stroke=#F7931E stroke-width=4 d="M465 374 250 498 35 374V126L250 2l215 124z"/>
+<path fill=none stroke=#F7931E stroke-width=3 d="M250 2v496M465 126 35 374"/><path fill=none stroke=#FF931E stroke-width=3 d="m35 126 430 248"/>
+<path fill=none stroke=#B3B3B3 d="M443 362 250 473 57 362V139L250 27l193 112z"/><path fill=none stroke=#B3B3B3 d="m422 349-172 99-171-99V151l171-99 172 99z"/><path fill=none stroke=#B3B3B3 d="m400 337-150 86-150-86V164l150-87 150 87z"/><path fill=none stroke=#B3B3B3 d="m378 324-128 74-128-74V176l128-74 128 74z"/><path fill=none stroke=#B3B3B3 d="m357 313-107 61-107-61V190l107-62 107 62z"/><path fill=none stroke=#B3B3B3 d="m335 300-85 49-85-49v-98l85-49 85 49z"/>
+<path fill=none stroke=#000 d="m313 288-63 36-63-36v-73l63-37 63 37z"/><path fill=none stroke=#000 d="m292 275-42 24-42-24v-48l42-24 42 24z"/>
+<path opacity=.6 fill=#3FA9F5 stroke=#0071BC stroke-width=2 d="m250 131 150 33-43 149-107 135-128-124-22-160z"/>
+<path opacity=.6 fill=#F0F stroke=#C700F0 stroke-width=2 d="m250 77 42 150 86 97-128 74-172-49 45-174z"/>
+<text transform="translate(353 43)"><tspan x=0 y=0 font-size=12>Human</tspan><tspan x=0 y=14.4 font-size=12>Level</tspan></text>
+<text transform="translate(238 34)">90%</text><text transform="translate(239 82)" font-size=12>70%</text><text transform="translate(239 58)" font-size=12>80%</text><text transform="translate(239 108)" font-size=12>60%</text><text transform="translate(238 134)" font-size=12>50%</text><text transform="translate(238 159)" font-size=12>40%</text><text transform="translate(239 184)" font-size=12>30%</text>
+<text transform="translate(469 124)" class="cl c1">Ra</text>
+<text transform="translate(10 383)" class="cl c5">Ri</text>
+<text transform="translate(10 122)" class="cl c6">Rc</text>
+<text transform="translate(280 498)" class="cl c4">Rx</text>
+<text transform="translate(470 379)" class="cl c2">Rs</text>
+</svg>
+</div>
+<div class="column w50" style="text-align:left">
+<div><h1 class=c7>Advanced Benchmarks and Evaluations for Artificial Intelligence Systems.</h1></div>
+<ul>
+<li><span class="fs20 c7" >Fixed Goalposts</span><span>  If we can identify the collective cognitive functions that matter in AI -and apply effective benchmarks, we will have have more confidence in gauging progress towards human-level AGI.</li><br>
+<li><span class="fs20 c7" >Saftey & Alignment Focused</span><span> AI and Human-level AGI can bring incredible social benefit but like other information technologies, it also comes with risks and must be released and used responsibly. </span></li><br>
+<li><span class="fs20 c7" >Efficient and lean </span><span> we beleive in holistic and higly optimized solutions -and we practice what we preach. The average webage in 2024 is 2.2mB, At less than 14 kB this entire webpage is roughly 150 times smaller!</li><br>
+
+</ul>
+<div class="row">
+<div style="width:375px;margin:auto;text-align:center">
+<a class="btnl" href=#><strong>Read more...</strong></a>
+<a class="btnl" href=#><strong>Compare Models</strong></a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main>
+<div class="row">
+<div class="column w100">
+<h2>Benchmarks and evals are the key barometer for progress towards advanced AI systems.</h2>
+</div>
+</div>
+<div class="row">
+<div class="column w25">
+<icon>➲</icon>
+<h2>Standards Drive Innovation</h2>
+<p> Establishing robust benchmarks provides clear goals for researchers and developers, fostering healthy competition and driving innovation in advanced AI technologies.</p>
+</div>
+<div class="column w25">
+<icon>⚠</icon>
+<h2>Advancing AGI Safely</h2>
+<p>By establishing stable goalposts for AI capabilities, better benchmarks contribute to the safe and responsible development of artificial general intelligence (AGI), helping researchers monitor progress towards human-level cognitive abilities while mitigating risks associated with unchecked advancement.</p>
+</div>
+<div class="column w25">
+<icon>⚖</icon>
+<h2>Informing Policy</h2>
+<p>Better benchmarks help policymakers and regulators understand the capabilities and limitations of AI systems, informing the development of policies and regulations that promote safety, fairness, and accountability in AI deployment.</p>
+</div>
+<div class="column w25">
+<icon>❤</icon>
+<h2>Trust and Adoption</h2>
+<p>Reliable benchmarks build trust in AI technologies by providing users with a clear understanding of their capabilities and performance characteristics. This promotes wider adoption of AI solutions across various domains, from healthcare to finance.</p>
+</div>
+</div>
+<div class="row dark">
+<div class="column w100">
+<h2>Benchmarks covering a wide range of human cognitition</h2>
+<p style="width: 85%; margin: auto">Why do we need holistic AI benchmarks? Evals and benchmarks provide a stardized framework to gauge performance and capabilities of AI systems such as LLMs.  in various tasks like logical reasoning, math, coding, accuracy and truthfulness, and more. By comparing the results of different models, benchmarks allow us to understand their strengths, weaknesses and potentially dangerous capabilites.
+</p>
+</div>
+ <div class="column w75" style="margin:10px auto; ">
+A few of the leading conventional benchmarks:
+<br/><br/> 
+<table cellpadding="2" cellspacing="2" width="100%" style="color: #ddd;" rules="none">
+<tr>
+<th></th>
+<th>Reasoning</th>
+<th>Math</th>
+<th>Coding</th>
+<th>Quality</th>
+<th>Accuracy</th>
+</tr>
+<tr>
+<td>MMLu</td>
+<td>☑</td>
+<td>☑</td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>ARC-Reasoning</td>
+<td>☑</td>
+<td>☑</td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+ 
+<tr>
+<td>HellaSwag</td>
+<td>☑</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>GSM-8K</td>
+<td>☑</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>HumanEval</td>
+<td></td>
+<td></td>
+<td>☑</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BigBench</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>Truthful QA</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>CodeXGLUE</td>
+<td></td>
+<td></td>
+<td>☑</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Truthful QA</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr>
+<td>Chatbot Arena</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>☑</td>
+</tr>
+<tr></tr>
+</table>
+<br/>
+</div> 
+
+<div class="column w100">
+<h2>HexAI is different - We focus on more holistic explainable evaluations for general cognitive capabilities. In other words, we're interested in a system's ability to </h2>
+<p style="width: 80%; margin: auto"> .</p>
+</div>
+</div>
+
+<div class="row" style="margin-top: 50px;">
+<div class="column w33">
+<a class="icn">HΞX<sub>R</sub></a>
+<h2>Reasoning</h2>
+<ul class="fs16">
+<li>Deductive Reasoning</li>
+<li>Inductive Reasoning</li>
+<li>Abductive Reasoning</li>
+<li>Analogical Reasoning</li>
+<li>Statistical Reasoning</li>
+<li>Probabilistic Reasoning</li>
+<li>Fuzzy Logic Reasoning</li>
+<li>Causal Reasoning</li>
+<li>Bayesian Reasoning</li>
+<li>Hypothetical Reasoning</li>
+<li>Analogical Reasoning</li>
+<li>Counterfactual Reasoning</li>
+<li>Reflective Reasoning</li>
+<li>Heuristic Reasoning</li>
+<li>Systems Thinking</li>
+<li>Transductive Reasoning</li>
+<li>Constructive Reasoning</li>
+<li>Practical Reasoning</li>
+<li>(12) more... </li>
+</ul>
+</div>
+<div class="column w33">
+<a class="icn">HΞX<sub>A</sub></a>
+<h2>Autonomy</h2>
+<ul class="fs16">
+<li>Executive Functioning</li>
+<li>Metacognition</li>
+<li>Individual Agency</li>
+<li>Collective Agency</li>
+<li>Moral Agency</li>
+<li>Agency in Artificial Intelligence</li>
+<li>Political Agency</li>
+<li>Subjective Experience</li>
+<li>Self-awareness</li>
+<li>Intentionality</li>
+<li>Temporal Awareness</li>
+<li>Unity of Consciousness</li>
+<li>Conscious Control</li>
+<li>Metacognition</li>
+<li>Higher-order Cognition</li>
+<li>Theory of Mind</li>
+<li>(8) more...</li>
+</ul>
+</div>
+<div class="column w33">
+<a class="icn">HΞX<sub>L</sub></a>
+<h2>Learning </h2>
+<ul class="fs16">
+<li>Associative </li>
+<li>Observational</li>
+<li>Problem-Based Learning</li>
+<li>Scaffolding</li>
+<li>Transfer of Learning</li>
+<li>Short-Term Memory</li>
+<li>Long-Term Memory</li>
+<li>Episodic Memory</li>
+<li>Semantic Memory</li>
+<li>Procedural Memory</li>
+<li>Working Memory</li>
+<li>Declarative Memory</li>
+<li>Autobiographical Memory</li>
+<li>Flashbulb Memory</li>
+<li>Prospective Memory</li>
+<li>Source Memory</li>
+<li>Recognition Memory</li>
+<li>Recall Memory</li>
+<li>Encoding</li>
+<li>Storage</li>
+<li>(13) more...</li>
+</ul>
+</div>
+<div class="column w50">
+<a class="icn">HΞX<sub>ps</sub></a>
+<h2>Real World Problem Solving</h2>
+<ul class="fs16">
+<li>Legal Reasoning</li>
+<li>Risk Assessment</li>
+<li>Business Evaluation</li>
+<li>Forecasting Event outcomes</li>
+<li>Standardized Tests</li>
+<li>Job Performance Assessments</li>
+<li>Performance Reviews</li>
+<li>Problem-Solving Challenges</li>
+<li>Case Studies</li>
+<li>Simulations</li>
+<li>Project-Based Assessments</li>
+<li>Competitions</li>
+<li>Performance Metrics</li>
+<li>Feedback and Peer Reviews</li>
+<li>Scenario Planning</li>
+<li>Intuition Tests</li>
+<li>Decision-Making Exercises</li>
+<li>Real-world Problem Solving</li>
+<li>Ethical Dilemmas</li>
+<li>Adaptability Assessments</li>
+</ul>
+</div>
+<div class="column w50">
+<a class="icn">HΞX<sub>S</sub></a>
+<h2>Saftey & Alignment</h2>
+<ul class="fs16">
+<li>Self-Improvement</li>
+<li>Duplication</li>
+<li>Dangerous Capabilities</li>
+<li>Capacity for Manipulation</li>
+<li>Deliberate Misinformation </li>
+<li>Harm Awareness </li>
+<li>Moral Reasoning</li>
+<li>Appropriate Discrimination </li>
+<li>Conception of Fairness</li>
+<li>Awareness of Limitations</li>
+<li>Irrational Bias</li>
+<li>Cyber Capacity </li>
+<li>Network Access </li>
+<li>System Access </li>
+<li>Internet access </li>
+<li>agentic behavior</li>
+ 
+</ul>
+</div>
+</div>
+</main>
+<footer>
+<div class="row">
+<div class="column w25">
+<p><strong>AI Benchmarks</strong> </p>
+<p>Hex AI</p>
+<p>Copyright 2024, HexAI.org </p>
+<p></p>
+</div>
+<div class="column w25">
+<p><strong>HΞX - Psychographic</strong> </p>
+<p></p>
+<ul>
+<li><a href="b.html">Agentic Behavior Evals</a></li>
+<li><a href="b.html">Visual interpretation</a></li>
+<li><a href="b.html"></a></li>
+<li><a href="b.html"></a></li>
+</ul>
+</div>
+<div class="column w25">
+<p><strong>HΞX - Real-World (RL) Capabilities </strong> </p>
+<ul>
+<li><a href="b.html">RL Problem solving</a></li>
+<li><a href="b.html">RL Forcasting </a></li>
+<li><a href="b.html">RL Case Studies </a></li>
+<li><a href="b.html">RL Probabilistic Reasoning </a></li>
+<li><a href="b.html">others... </a></li>
+</ul>
+</div>
+<div class="column w25">
+<p><br></p>
+<ul>
+<li><a href="t.htm">Terms</a> </li>
+<li><a href="p.htm">Privacy</a> </li>
+<li><a href="l.htm">License </a></li>
+<li><a href="c.htm">Contact</a> </li>
+</ul>
+</div>
+</div>
+</footer>
+</body>
+</html>
